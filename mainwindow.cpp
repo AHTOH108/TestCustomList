@@ -7,25 +7,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    for(int i = 0; i < 10; i++){
-        MyObject *newObject = new MyObject(this);
-        newObject->setId(i);
-        newObject->setName(generateString(100));
-        addItems(newObject);
-    }
-    updateDataListWidget(listItems);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::on_pushButton_add_clicked()
-{
-    addItemsString(ui->plainTextEdit->toPlainText());
-    updateDataListWidget_2(listItemsString);
-    ui->plainTextEdit->clear();
 }
 
 void MainWindow::addItems(MyObject *item)
@@ -42,11 +28,10 @@ void MainWindow::updateDataListWidget(QVector<MyObject *> list)
 {
     for(int i = 0; i < list.size(); i++){
         QListWidgetItem *item = new QListWidgetItem;
-        Form *myit = new Form(this);//
+        Form *myit = new Form(this);
         myit->setText(list[i]->getName());
-        //myit->setName(QString::number(i));
-        //myit->setPriority(i);
         item->setSizeHint(myit->sizeHint());
+        item->setFlags( Qt::ItemIsEditable | Qt::ItemIsEnabled );
         ui->listWidget->addItem(item);
         ui->listWidget->setItemWidget(item,myit);
         //connect(myit,SIGNAL(buttonClic(QString)),this,SLOT(delitem(QString)));
@@ -56,9 +41,15 @@ void MainWindow::updateDataListWidget(QVector<MyObject *> list)
 void MainWindow::updateDataListWidget_2(QVector<QString> list)
 {
    ui->listWidget_2->clear();
-   ui->listWidget_2->resize(300,300);
-   for (int i = 0; i < list.size(); i ++)
-       ui->listWidget_2->addItem(list[i]);
+   //ui->listWidget_2->resize(300,300);
+   for (int i = 0; i < list.size(); i ++){
+       QListWidgetItem *item = new QListWidgetItem;
+       QColor color = QColor (240, 240, 240, 200);
+       item->setBackgroundColor(color);
+       item->setText(list[i]);
+       ui->listWidget_2->addItem(item);
+       //ui->listWidget_2->addItem(list[i]);
+   }
 }
 
 QString MainWindow::generateString(int lenght)
@@ -97,3 +88,28 @@ void MainWindow::on_listWidget_doubleClicked(const QModelIndex &index)
         }
     }
 }
+
+void MainWindow::on_pushButton_genData_clicked()
+{
+
+    for(int i = 0; i < 20; i++){
+        QString str = generateString(qrand() % 500);
+        MyObject *newObject = new MyObject(this);
+        newObject->setId(i);
+        newObject->setName(str);
+        addItems(newObject);
+    }
+    updateDataListWidget(listItems);
+}
+
+void MainWindow::on_pushButton_add_clicked()
+{
+    for(int i = 0; i < 50; i++){
+        QString str = generateString(qrand() % 500);
+        addItemsString(str);
+    }
+    updateDataListWidget_2(listItemsString);
+
+    ui->plainTextEdit->clear();
+}
+

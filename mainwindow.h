@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QVector>
+#include <form.h>
+#include <QColor>
 
 #include "object/myobject.h"
 
@@ -24,6 +26,8 @@ private slots:
     void on_listWidget_2_doubleClicked(const QModelIndex &index);
 
     void on_listWidget_doubleClicked(const QModelIndex &index);
+
+    void on_pushButton_genData_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -16,4 +16,6 @@ Form::~Form()
 void Form::setText(QString text)
 {
     ui->label->setText(text);
+    //ui->label->
+    //ui->textBrowser->setText(text);
 }
