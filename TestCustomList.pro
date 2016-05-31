@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     form.cpp \
-    object/myobject.cpp
+    object/myobject.cpp \
+    customWidget/mytableitem.cpp
 
 HEADERS  += mainwindow.h \
     form.h \
-    object/myobject.h
+    object/myobject.h \
+    customWidget/mytableitem.h
 
 FORMS    += mainwindow.ui \
     form.ui

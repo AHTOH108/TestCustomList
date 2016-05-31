@@ -6,6 +6,7 @@ Form::Form(QWidget *parent) :
     ui(new Ui::Form)
 {
     ui->setupUi(this);
+    ui->pushButton->setVisible(false);
 }
 
 Form::~Form()

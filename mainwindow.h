@@ -5,7 +5,9 @@
 #include <QVector>
 #include <form.h>
 #include <QColor>
+#include <QMessageBox>
 
+#include "customWidget/mytableitem.h"
 #include "object/myobject.h"
 
 namespace Ui {
@@ -29,6 +31,10 @@ private slots:
 
     void on_pushButton_genData_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_tableWidget_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
 
@@ -46,6 +52,11 @@ private:
     void updateDataListWidget_2(QVector <QString> list);
 
     QString generateString(int lenght);
+
+    void createTables();
+    void updateTable(QVector <QString> list);
+
+    void showMessage(QString text);
 
 };
 
