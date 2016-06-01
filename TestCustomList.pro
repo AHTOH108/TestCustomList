@@ -16,12 +16,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     form.cpp \
     object/myobject.cpp \
-    customWidget/mytableitem.cpp
+    customWidget/mytableitem.cpp \
+    tablex.cpp \
+    customWidget/mytablewidget.cpp
 
 HEADERS  += mainwindow.h \
     form.h \
     object/myobject.h \
-    customWidget/mytableitem.h
+    customWidget/mytableitem.h \
+    tablex.h \
+    customWidget/mytablewidget.h
 
 FORMS    += mainwindow.ui \
-    form.ui
+    form.ui \
+    customWidget/mytablewidget.ui

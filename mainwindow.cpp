@@ -6,7 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    tableX = new TableX(this);
     createTables();
+
+    this->tableX = generateTableX(500, 500);
+    ui->widget->setData(this->tableX);
 }
 
 MainWindow::~MainWindow()
@@ -61,6 +65,16 @@ QString MainWindow::generateString(int lenght)
         str.append(RANDOM_STRING[k]);
     }
     return str;
+}
+
+TableX *MainWindow::generateTableX(int countRow, int countColumn)
+{
+    TableX *newTableX = new TableX(this);
+    for (int i = 0; i < countRow; i++)
+        newTableX->addNewRow(i*2);
+    for(int j = 0; j < countColumn; j++)
+        newTableX->addNewColumn(j*3);
+    return newTableX;
 }
 
 void MainWindow::createTables()
@@ -136,7 +150,6 @@ void MainWindow::on_listWidget_doubleClicked(const QModelIndex &index)
 
 void MainWindow::on_pushButton_genData_clicked()
 {
-
     for(int i = 0; i < 20; i++){
         QString str = generateString(qrand() % 500);
         MyObject *newObject = new MyObject(this);

@@ -8,12 +8,13 @@
 #include <QMessageBox>
 
 #include "customWidget/mytableitem.h"
+#include "customWidget/mytablewidget.h"
 #include "object/myobject.h"
+#include "tablex.h"
 
 namespace Ui {
 class MainWindow;
 }
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,6 +22,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    const QString RANDOM_STRING = "qwerty uiop[]asdfg hjkl;'zxc vbnm,./ йцу кенгшщз хъфыва пролдж эячсмитьб ю. 12345 678 90";
 
 private slots:
     void on_pushButton_add_clicked();
@@ -38,10 +40,12 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    const QString RANDOM_STRING = "qwerty uiop[]asdfg hjkl;'zxc vbnm,./ йцу кенгшщз хъфыва пролдж эячсмитьб ю. 12345 678 90";
+
 
     QVector <MyObject*> listItems;
     QVector <QString> listItemsString;
+
+    TableX *tableX;
 
     // Method's ************
 
@@ -52,6 +56,7 @@ private:
     void updateDataListWidget_2(QVector <QString> list);
 
     QString generateString(int lenght);
+    TableX *generateTableX(int countRow, int countColumn);
 
     void createTables();
     void updateTable(QVector <QString> list);
