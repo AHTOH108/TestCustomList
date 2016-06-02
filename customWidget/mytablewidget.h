@@ -2,7 +2,8 @@
 #define MYTABLEWIDGET_H
 
 #include <QWidget>
-
+#include <QTime>
+#include <QDebug>
 #include "tablex.h"
 
 namespace Ui {
@@ -27,8 +28,14 @@ private:
 
     TableX *tableX;
 
+    int selectRow;
+    int selectColumn;
+
 
     void updateTable();
+    void clearSelectItem();
+    void goSelectItem(int row, int column);
+    void goDeselectItem(int row, int column);
 
 };
 

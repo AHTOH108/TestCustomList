@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     tableX = new TableX(this);
     createTables();
 
-    this->tableX = generateTableX(500, 500);
+    this->tableX = generateTableX(200, 200);
     ui->widget->setData(this->tableX);
 }
 
@@ -74,6 +74,10 @@ TableX *MainWindow::generateTableX(int countRow, int countColumn)
         newTableX->addNewRow(i*2);
     for(int j = 0; j < countColumn; j++)
         newTableX->addNewColumn(j*3);
+
+        for (int i = 0; i < countRow; i++)
+            for(int j = 0; j < countColumn; j++)
+                newTableX->setValueByIndex(i, j, rand() % 100);
     return newTableX;
 }
 

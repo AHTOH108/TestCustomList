@@ -38,9 +38,14 @@ bool TableX::removeColumn(int idColumn)
 
 }
 
-void TableX::setValue(int row, int column, int value)
+void TableX::setValue(int idRow, int idColumn, int value)
 {
 
+}
+
+void TableX::setValueByIndex(int row, int column, int value)
+{
+    map[intToString(lstIdRow[row])] [intToString(lstIdColumn[column])] = value;
 }
 
 int TableX::getValueByIndex(int row, int column)

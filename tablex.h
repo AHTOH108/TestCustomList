@@ -19,7 +19,8 @@ public:
     bool removeRow(int idRow);
     bool removeColumn(int idColumn);
 
-    void setValue(int row, int column, int value);
+    void setValue(int idRow, int idColumn, int value);
+    void setValueByIndex(int row, int column, int value);
     int getValue(int idRow, int idColumn) { return map[intToString(idRow)][intToString(idColumn)]; }
     int getValueByIndex(int row, int column);
 
@@ -39,5 +40,6 @@ private:
 
     QString intToString(int k);
 };
+
 
 #endif // TABLEX_H
